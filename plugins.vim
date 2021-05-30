@@ -11,4 +11,5 @@ Plug 'kyazdani42/nvim-web-devicons'
 "colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
+Plug 'shaunsingh/nord.nvim'
 call plug#end()
