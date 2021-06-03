@@ -23,4 +23,4 @@ set shortmess+=c
 set laststatus=2
 set termguicolors
 set noshowmode
-colorscheme gruvbox8_hard
+colorscheme nord

@@ -10,6 +10,7 @@ Plug 'ap/vim-css-color'
 Plug 'kyazdani42/nvim-web-devicons'
 "colorschemes
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 Plug 'dracula/vim'
 Plug 'shaunsingh/nord.nvim'
 call plug#end()
