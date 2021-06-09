@@ -1,3 +1,4 @@
+filetype plugin on
 set clipboard=unnamedplus
 set incsearch
 set scrolloff=8
@@ -5,6 +6,8 @@ set sidescrolloff=8
 set tabstop=4
 set shiftwidth=4
 set expandtab
+if BufWrite *.tsv :set noexpandtab
+
 set splitright
 set splitbelow
 set smartindent
@@ -24,3 +27,4 @@ set laststatus=2
 set termguicolors
 set noshowmode
 colorscheme nord
+hi Normal guibg=NONE ctermbg=NONE
