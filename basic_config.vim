@@ -6,7 +6,6 @@ set sidescrolloff=8
 set tabstop=4
 set shiftwidth=4
 set expandtab
-au BufWrite *.tsv :set noexpandtab
 
 set splitright
 set splitbelow
