@@ -23,3 +23,6 @@ vim.api.nvim_set_keymap('n','<leader>t' ,':call Term(10)<CR>' ,{noremap = true})
 vim.api.nvim_set_keymap('n','<leader><tab>' ,':bnext<CR>' ,{noremap = true})
 vim.api.nvim_set_keymap('n','<leader><s-tab>' ,':bprev<CR>' ,{noremap = true})
 vim.api.nvim_set_keymap('i','<C-f>','<C-x><C-f>',{noremap = true})
+
+vim.api.nvim_set_keymap('n','<leader>tf',':Telescope file_browser<CR>',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('n','<leader>tc',':Telescope treesitter<CR>',{noremap=true, silent=true})
