@@ -6,6 +6,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'vimwiki/vimwiki'
+Plug 'unblevable/quick-scope'
 "asthetics
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ap/vim-buftabline'

@@ -35,3 +35,6 @@ function! Term(height)
         let g:term_win = win_getid()
     endif
 endfunction
+
+let g:vimwiki_list = [{'path': '$HOME/Documents/vim/wiki',
+          \ 'path_html': '$HOME/Documents/vim/wiki_html'}]
