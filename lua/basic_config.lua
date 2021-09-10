@@ -19,13 +19,10 @@ vim.opt.relativenumber = true
 vim.opt.laststatus = 2
 vim.opt.termguicolors = true
 
---vim.g.nord_contrast = true
-vim.g.nord_borders = true
-require('nord').set()
+vim.opt.cot = {'noinsert', 'menuone', 'noselect'}
+
 vim.api.nvim_command([[
-hi Normal ctermbg=none
-hi Normal guibg=none
-au ColorScheme * hi Normal ctermbg=none guibg=none
+colorscheme gruvbox8
 ]])
 
 vim.api.nvim_command([[

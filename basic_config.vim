@@ -7,18 +7,6 @@ set noshowmode
 
 syntax on
 
-function! MyFoldText()
-    let line = getline(v:foldstart)
-    let foldedlinecount = v:foldend - v:foldstart + 1
-    return ' ⭐️ '. foldedlinecount . line
-endfunction
-
-set foldtext=MyFoldText()
-set fillchars=fold:\
-
-let g:term_buf = 0
-let g:term_win = 0
-
 function! Term(height)
     if win_gotoid(g:term_win)
         hide

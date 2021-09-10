@@ -18,13 +18,35 @@ vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-n><C-w>k' ,{noremap=true, silent
 vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-n><C-w>l' ,{noremap=true, silent=true})
 vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-n>' ,{noremap=true, silent=true})
 
+vim.api.nvim_set_keymap('n', '<leader>p', ':Telescope buffers<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope buffers<CR>', {noremap=true, silent=true})
 
 vim.api.nvim_set_keymap('n', '<leader>r', ':call Term(10)<CR>' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader><tab>', ':bnext<CR>' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader><s-tab>', ':bprev<CR>' ,{noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', '<C-f>','<C-x><C-f>', {noremap=true, silent=true})
-
-vim.api.nvim_set_keymap('n', '<leader> ' ,':lua vim.lsp.buf.hover()<CR>' ,{noremap=true, silent=true})
 
 vim.api.nvim_set_keymap('n', '<leader>tf', ':Telescope find_files<CR>',{noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<leader>tc', ':Telescope treesitter<CR>',{noremap=true, silent=true})
+
+vim.api.nvim_set_keymap('n', 'd', '"_d',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'd', '"_d',{noremap=true, silent=true})
+
+vim.api.nvim_set_keymap('n', '<leader>d', '"+d',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', '<leader>d', '"+d',{noremap=true, silent=true})
+
+vim.api.nvim_set_keymap('n', 'x', '"_x',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'x', '"_x',{noremap=true, silent=true})
+
+vim.api.nvim_set_keymap('n', '<leader>x', '"+x',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', '<leader>x', '"+x',{noremap=true, silent=true})
+
+vim.api.nvim_set_keymap('n', 'c', '"_c',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'c', '"_c',{noremap=true, silent=true})
+
+vim.api.nvim_set_keymap('n', '<leader>c', '"+c',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', '<leader>c', '"+c',{noremap=true, silent=true})
+
+
+vim.api.nvim_set_keymap('n', 'p', '"+p',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'p', '"+p',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'P', '"+P',{noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'P', '"+P',{noremap=true, silent=true})
