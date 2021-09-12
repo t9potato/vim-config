@@ -10,6 +10,7 @@ Plug 'unblevable/quick-scope'
 "asthetics
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground', {'do': ':TSUpdate'}
 Plug 'ap/vim-css-color'
 "colorschemes
 Plug 'lifepillar/vim-gruvbox8'
