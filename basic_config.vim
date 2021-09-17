@@ -8,9 +8,9 @@ set noshowmode
 syntax on
 
 function! Term(height)
-    if win_gotoid(g:term_win)
-        hide
-    else
+"    if win_gotoid(g:term_win)
+"        hide
+"    else
         botright new
         exec "resize " . a:height
         try
@@ -21,7 +21,7 @@ function! Term(height)
         endtry
         startinsert!
         let g:term_win = win_getid()
-    endif
+"    endif
 endfunction
 
 let g:vimwiki_list = [{'path': '$HOME/Documents/vim/wiki',
