@@ -14,7 +14,7 @@ vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-n>' ,{noremap=true, silent=true}
 vim.api.nvim_set_keymap('n', '<leader>p', ':Telescope buffers<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope buffers<CR>', {noremap=true, silent=true})
 
-vim.api.nvim_set_keymap('n', '<leader>r', ':call Term(10)<CR>' ,{noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<leader>r', ':term<CR>' ,{noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', '<C-f>','<C-x><C-f>', {noremap=true, silent=true})
 
 vim.api.nvim_set_keymap('n', '<leader>tf', ':Telescope find_files<CR>',{noremap=true, silent=true})
