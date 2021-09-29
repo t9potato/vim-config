@@ -12,3 +12,4 @@ vim.api.nvim_set_keymap('n', '<leader> ', '<cmd>lua vim.lsp.buf.hover()<CR>', {n
 vim.api.nvim_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('i', '<tab>', '<Plug>(completion_smart_tab)', {})
 vim.api.nvim_set_keymap('i', '<s-tab>', '<Plug>(completion_smart_s_tab)', {})
+vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', {})

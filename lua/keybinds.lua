@@ -5,13 +5,6 @@ vim.api.nvim_set_keymap('n', '<leader>q', ':bdelete<CR>' ,{noremap=true, silent=
 vim.api.nvim_set_keymap('n', '<leader>e', 'ZZ' ,{noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<leader>!', 'ZQ' ,{noremap=true, silent=true})
 
-
-vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader>k', '<C-w>k' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader>l', '<C-w>l' ,{noremap=true, silent=true})
-
-
 vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-n><C-w>h' ,{noremap=true, silent=true})
 vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-n><C-w>j' ,{noremap=true, silent=true})
 vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-n><C-w>k' ,{noremap=true, silent=true})
