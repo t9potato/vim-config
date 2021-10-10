@@ -19,7 +19,7 @@ vim.opt.relativenumber = true
 vim.opt.laststatus = 2
 vim.opt.termguicolors = true
 
-vim.opt.cot = {'noinsert', 'menuone', 'noselect'}
+vim.opt.cot={ 'noinsert', 'menuone', 'noselect'}
 
 vim.api.nvim_command([[
 colorscheme gruvbox8
