@@ -3,17 +3,13 @@
 require'nvim-treesitter.configs'.setup { highlight = { enable = true}}
 
 -- complete
---local lsp = require'lspconfig'
--- lsp.pyright.setup{ on_attach=require'completion'.on_attach }
--- lsp.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
--- lsp.clangd.setup{ on_attach=require'completion'.on_attach }
--- lsp.jdtls.setup{ on_attach=require'completion'.on_attach, cmd={'jdtls'} }
--- vim.api.nvim_set_keymap('i', '<tab>', '<Plug>(completion_smart_tab)', {})
--- vim.api.nvim_set_keymap('i', '<s-tab>', '<Plug>(completion_smart_s_tab)', {})
- 
 local cmp = require'cmp'
+local lspkind = require('lspkind')
 
 cmp.setup({
+    formatting = {
+        format = lspkind.cmp_format({with_text = false, maxwidth = 50})
+    },
     snippet = {
         expand = function(args)
             -- For `luasnip` user.

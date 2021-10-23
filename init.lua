@@ -1,5 +1,5 @@
-vim.api.nvim_exec("source ~/AppData/Local/nvim/plugins.vim", false)
-vim.api.nvim_exec("source ~/AppData/Local/nvim/basic_config.vim", false)
+vim.api.nvim_exec("source ~/.config/nvim/plugins.vim", false)
+vim.api.nvim_exec("source ~/.config/nvim/basic_config.vim", false)
 require("basic_config")
 require("keybinds")
 require("spellcheck")
