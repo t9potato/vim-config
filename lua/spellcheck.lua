@@ -5,4 +5,7 @@ vim.cmd([[
  au BufWrite *.wiki :setlocal spell spelllang=en_au
  au BufWrite *.wiki :nnoremap <C-s> ]sz=
  au BufWrite *.wiki :nnoremap <C-S> [sz=
+ au BufWrite *.html :setlocal spell spelllang=en_au
+ au BufWrite *.html :nnoremap <C-s> ]sz=
+ au BufWrite *.html :nnoremap <C-S> [sz=
  ]])
