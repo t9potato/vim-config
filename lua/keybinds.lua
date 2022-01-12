@@ -38,6 +38,8 @@ vim.api.nvim_set_keymap('v', 'c', '"_c',{noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<leader>c', '"+c',{noremap=true, silent=true})
 vim.api.nvim_set_keymap('v', '<leader>c', '"+c',{noremap=true, silent=true})
 
+vim.api.nvim_set_keymap('v', '<', '<gv', {noremap=true,silent=true})
+vim.api.nvim_set_keymap('v', '>', '>gv', {noremap=true,silent=true})
 
 vim.api.nvim_set_keymap('n', 'p', '"+p',{noremap=true, silent=true})
 vim.api.nvim_set_keymap('v', 'p', '"+p',{noremap=true, silent=true})
