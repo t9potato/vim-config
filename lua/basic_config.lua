@@ -27,6 +27,8 @@ shortmess="c"
 showmode=false
 syntax=true
 filetype=plugin
+vim.opt.cursorline=true
+vim.opt.cursorcolumn=true
 
 vim.api.nvim_command([[
 colorscheme gruvbox8
