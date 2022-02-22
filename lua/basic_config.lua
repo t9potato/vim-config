@@ -21,15 +21,15 @@ vim.opt.termguicolors = true
 
 vim.opt.cot={'menu', 'noinsert', 'menuone', 'noselect'}
 
-hlsearch=false
-swapfile=false
-shortmess="c"
-showmode=false
-syntax=true
-filetype=plugin
 
 vim.api.nvim_command([[
 colorscheme gruvbox8
+set nohlsearch
+set noswapfile
+set noshowmode
+set shortmess+=c
+syntax enable
+set filetype=plugin
 ]])
 
 vim.api.nvim_command([[
