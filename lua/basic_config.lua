@@ -30,14 +30,4 @@ filetype=plugin
 vim.opt.cursorline=true
 vim.opt.cursorcolumn=true
 
-vim.api.nvim_command([[
-colorscheme gruvbox8
-]])
-
-vim.api.nvim_command([[
-augroup AutoCompileLatex
-autocmd BufEnter *.tex :set wrap linebreak nolist spell
-autocmd BufWritePost *.tex :silent !bibtex %:t:r > /dev/null
-autocmd BufWritePost *.tex :silent !compiler % > /dev/null
-augroup END 
-]])
+require('github-theme').setup()
