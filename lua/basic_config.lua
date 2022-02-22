@@ -21,7 +21,6 @@ vim.opt.termguicolors = true
 
 vim.opt.cot={'menu', 'noinsert', 'menuone', 'noselect'}
 
-
 vim.api.nvim_command([[
 colorscheme gruvbox8
 set nohlsearch
@@ -30,6 +29,8 @@ set noshowmode
 set shortmess+=c
 syntax enable
 set filetype=plugin
+set cursorline
+set cursorcolumn
 ]])
 
 vim.api.nvim_command([[
@@ -39,3 +40,5 @@ autocmd BufWritePost *.tex :silent !bibtex %:t:r > /dev/null
 autocmd BufWritePost *.tex :silent !compiler % > /dev/null
 augroup END 
 ]])
+
+require('github-theme').setup()

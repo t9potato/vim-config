@@ -29,4 +29,5 @@ return require('packer').startup(function()
     use { 'lifepillar/vim-gruvbox8' }
     use { 'projekt0n/github-nvim-theme' }
     use { 'EdenEast/nightfox.nvim' }
+    use { 'Mofiqul/dracula.nvim' }
 end)

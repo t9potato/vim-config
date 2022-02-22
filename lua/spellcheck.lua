@@ -1,11 +1,14 @@
 vim.cmd([[
- au BufWrite *.txt :setlocal spell spelllang=en_au
- au BufWrite *.txt :nnoremap <C-s> ]sz=
- au BufWrite *.txt :nnoremap <C-S> [sz=
- au BufWrite *.wiki :setlocal spell spelllang=en_au
- au BufWrite *.wiki :nnoremap <C-s> ]sz=
- au BufWrite *.wiki :nnoremap <C-S> [sz=
- au BufWrite *.html :setlocal spell spelllang=en_au
- au BufWrite *.html :nnoremap <C-s> ]sz=
- au BufWrite *.html :nnoremap <C-S> [sz=
+ au BufEnter *.txt :setlocal spell spelllang=en_au
+ au BufEnter *.txt :nnoremap <C-s> ]sz=
+ au BufEnter *.txt :nnoremap <C-S> [sz=
+ au BufEnter *.wiki :setlocal spell spelllang=en_au
+ au BufEnter *.wiki :nnoremap <C-s> ]sz=
+ au BufEnter *.wiki :nnoremap <C-S> [sz=
+ au BufEnter *.html :setlocal spell spelllang=en_au
+ au BufEnter *.html :nnoremap <C-s> ]sz=
+ au BufEnter *.html :nnoremap <C-S> [sz=
+ au BufEnter *.tex :set wrap linebreak nolist spell
+ au BufEnter *.tex :nnoremap <C-s> ]sz=
+ au BufEnter *.tex :nnoremap <C-S> [sz=
  ]])
