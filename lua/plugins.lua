@@ -1,6 +1,8 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
+    use { 'wbthomason/packer.nvim' }
+
     -- LSP
     use { 'neovim/nvim-lspconfig' }
     use { 'hrsh7th/cmp-nvim-lsp' }
@@ -23,6 +25,10 @@ return require('packer').startup(function()
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'ap/vim-css-color' }
+
+    --bar
+    use { 'SmiteshP/nvim-gps' }
+    use { 'nvim-lualine/lualine.nvim' }
 
     -- Colorschemes
     use { 'projekt0n/github-nvim-theme' }
