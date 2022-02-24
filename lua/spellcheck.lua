@@ -11,4 +11,8 @@ vim.cmd([[
  au BufEnter *.tex :set wrap linebreak nolist spell
  au BufEnter *.tex :nnoremap <C-s> ]sz=
  au BufEnter *.tex :nnoremap <C-S> [sz=
+ au BufEnter *.tex :nnoremap j gj
+ au BufEnter *.tex :nnoremap k gk
+ au BufEnter *.tex :vnoremap j gj
+ au BufEnter *.tex :vnoremap k gk
  ]])

@@ -41,6 +41,9 @@ vim.api.nvim_set_keymap('v', '<leader>c', '"+c',{noremap=true, silent=true})
 vim.api.nvim_set_keymap('v', '<', '<gv', {noremap=true,silent=true})
 vim.api.nvim_set_keymap('v', '>', '>gv', {noremap=true,silent=true})
 
+vim.api.nvim_set_keymap('n', '<leader>wc', 'g<C-g>',{noremap=true,silent=true})
+vim.api.nvim_set_keymap('v', '<leader>wc', 'g<C-g>',{noremap=true,silent=true})
+
 vim.api.nvim_set_keymap('n', 'p', '"+p',{noremap=true, silent=true})
 vim.api.nvim_set_keymap('v', 'p', '"+p',{noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', 'P', '"+P',{noremap=true, silent=true})

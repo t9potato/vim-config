@@ -16,7 +16,7 @@ vim.opt.smartcase = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.laststatus = 2
+vim.opt.laststatus = 1
 vim.opt.termguicolors = true
 
 vim.opt.cot={'menu', 'noinsert', 'menuone', 'noselect'}
