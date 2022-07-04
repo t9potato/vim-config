@@ -32,4 +32,5 @@ return require('packer').startup(function()
 
     -- Colorschemes
     use { 'projekt0n/github-nvim-theme' }
+    use { 'dracula/vim' }
 end)

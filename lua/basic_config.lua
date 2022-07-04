@@ -32,6 +32,7 @@ syntax enable
 set filetype=plugin
 set cursorline
 set cursorcolumn
+colorscheme dracula
 ]])
 
 vim.api.nvim_command([[
@@ -41,5 +42,3 @@ autocmd BufWritePost *.tex :silent !bibtex %:t:r > /dev/null
 autocmd BufWritePost *.tex :silent !compiler % > /dev/null
 augroup END 
 ]])
-
-require('github-theme').setup()
