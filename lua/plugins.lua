@@ -24,13 +24,11 @@ return require('packer').startup(function()
     -- asthetics
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use { 'ap/vim-css-color' }
+    use { 'npxbr/gruvbox.nvim' }
 
     --bar
-    use { 'SmiteshP/nvim-gps' }
     use { 'nvim-lualine/lualine.nvim' }
 
     -- Colorschemes
-    use { 'projekt0n/github-nvim-theme' }
-    use { 'dracula/vim' }
+
 end)

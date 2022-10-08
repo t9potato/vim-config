@@ -27,12 +27,10 @@ vim.api.nvim_command([[
 set nohlsearch
 set noswapfile
 set noshowmode
+colorscheme gruvbox
 set shortmess+=c
 syntax enable
 set filetype=plugin
-set cursorline
-set cursorcolumn
-colorscheme dracula
 ]])
 
 vim.api.nvim_command([[

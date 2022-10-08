@@ -1,50 +1,41 @@
 vim.g.mapleader = ' '
 
-vim.api.nvim_set_keymap('n', '<leader>s', ':w<CR>' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader>q', ':bdelete<CR>' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader>e', 'ZZ' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader>!', 'ZQ' ,{noremap=true, silent=true})
+function map(mode, lhs, rhs, opts)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
 
-vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-n><C-w>h' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-n><C-w>j' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-n><C-w>k' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-n><C-w>l' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-n>' ,{noremap=true, silent=true})
+map('n', '<leader>w', ':w<CR>' ,{ silent = true })
+map('n', '<leader>q', 'ZZ' ,{ silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>p', ':Telescope buffers<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope buffers<CR>', {noremap=true, silent=true})
+map('n', '<C-p>', ':Telescope buffers<CR>', { silent = true })
+map('n', '<leader>tf', ':Telescope find_files<CR>',{ silent = true })
+map('n', '<leader>tc', ':Telescope treesitter<CR>',{ silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>r', ':term<CR>' ,{noremap=true, silent=true})
-vim.api.nvim_set_keymap('i', '<C-f>','<C-x><C-f>', {noremap=true, silent=true})
+map('n', '<leader>r', ':term<CR>' ,{ silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>tf', ':Telescope find_files<CR>',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader>tc', ':Telescope treesitter<CR>',{noremap=true, silent=true})
+map('n', '<leader>d', '"+d',{ silent = true })
+map('v', '<leader>d', '"+d',{ silent = true })
 
-vim.api.nvim_set_keymap('n', 'd', '"_d',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'd', '"_d',{noremap=true, silent=true})
+map('n', 'x', '"_x',{ silent = true })
+map('v', 'x', '"_x',{ silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>d', '"+d',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', '<leader>d', '"+d',{noremap=true, silent=true})
+map('n', '<leader>x', '"+x',{ silent = true })
+map('v', '<leader>x', '"+x',{ silent = true })
 
-vim.api.nvim_set_keymap('n', 'x', '"_x',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'x', '"_x',{noremap=true, silent=true})
+map('n', '<leader>c', '"+c',{ silent = true })
+map('v', '<leader>c', '"+c',{ silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>x', '"+x',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', '<leader>x', '"+x',{noremap=true, silent=true})
+map('v', '<', '<gv', { silent = true })
+map('v', '>', '>gv', { silent = true })
 
-vim.api.nvim_set_keymap('n', 'c', '"_c',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'c', '"_c',{noremap=true, silent=true})
+map('n', '<leader>wc', 'g<C-g>',{ silent = true })
+map('v', '<leader>wc', 'g<C-g>',{ silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>c', '"+c',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', '<leader>c', '"+c',{noremap=true, silent=true})
-
-vim.api.nvim_set_keymap('v', '<', '<gv', {noremap=true,silent=true})
-vim.api.nvim_set_keymap('v', '>', '>gv', {noremap=true,silent=true})
-
-vim.api.nvim_set_keymap('n', '<leader>wc', 'g<C-g>',{noremap=true,silent=true})
-vim.api.nvim_set_keymap('v', '<leader>wc', 'g<C-g>',{noremap=true,silent=true})
-
-vim.api.nvim_set_keymap('n', 'p', '"+p',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'p', '"+p',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'P', '"+P',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'P', '"+P',{noremap=true, silent=true})
+map('n', '<leader>p', '"+p',{ silent = true })
+map('v', '<leader>p', '"+p',{ silent = true })
+map('n', '<leader>P', '"+P',{ silent = true })
+map('v', '<leader>P', '"+P',{ silent = true })
