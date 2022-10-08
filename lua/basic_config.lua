@@ -1,4 +1,4 @@
-vim.opt.clipboard = 'unnamedplus'
+-- vim.opt.clipboard = 'unnamedplus'
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
