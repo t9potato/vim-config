@@ -12,8 +12,8 @@ map('n', '<leader>w', ':w<CR>' ,{ silent = true })
 map('n', '<leader>q', 'ZZ' ,{ silent = true })
 
 map('n', '<C-p>', ':Telescope buffers<CR>', { silent = true })
-map('n', '<leader>tf', ':Telescope find_files<CR>',{ silent = true })
-map('n', '<leader>tc', ':Telescope treesitter<CR>',{ silent = true })
+map('n', '<leader>f', ':Telescope find_files<CR>',{ silent = true })
+map('n', '<leader>s', ':Telescope treesitter<CR>',{ silent = true })
 
 map('n', '<leader>r', ':term<CR>' ,{ silent = true })
 
@@ -31,9 +31,6 @@ map('v', '<leader>c', '"+c',{ silent = true })
 
 map('v', '<', '<gv', { silent = true })
 map('v', '>', '>gv', { silent = true })
-
-map('n', '<leader>wc', 'g<C-g>',{ silent = true })
-map('v', '<leader>wc', 'g<C-g>',{ silent = true })
 
 map('n', '<leader>p', '"+p',{ silent = true })
 map('v', '<leader>p', '"+p',{ silent = true })

@@ -26,9 +26,5 @@ return require('packer').startup(function()
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'npxbr/gruvbox.nvim' }
 
-    --bar
-    use { 'nvim-lualine/lualine.nvim' }
-
-    -- Colorschemes
-
+    use { 'ThePrimeagen/vim-be-good' }
 end)
