@@ -16,7 +16,7 @@ map('n', '<leader>f', ':Telescope find_files<CR>',{ silent = true })
 map('n', '<leader>s', ':Telescope treesitter<CR>',{ silent = true })
 
 map('n', 'gn', ':bn<cr>', { silent = true })
-map('n', 'gn', ':bn<cr>', { silent = true })
+map('n', 'gp', ':bp<cr>', { silent = true })
 
 map('n', '<leader>r', ':term<CR>' ,{ silent = true })
 
@@ -25,6 +25,9 @@ map('v', '>', '>gv', { silent = true })
 
 map('n', '<leader>d', '"+d',{ silent = true })
 map('v', '<leader>d', '"+d',{ silent = true })
+
+map('n', '<leader>y', '"+y',{ silent = true })
+map('v', '<leader>y', '"+y',{ silent = true })
 
 map('n', '<leader>x', '"+x',{ silent = true })
 map('v', '<leader>x', '"+x',{ silent = true })

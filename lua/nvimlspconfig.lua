@@ -45,6 +45,7 @@ require'lspconfig'.rust_analyzer.setup(config({}))
 require'lspconfig'.pylsp.setup(config({}))
 require'lspconfig'.clangd.setup(config({}))
 require'lspconfig'.texlab.setup(config({}))
+require'lspconfig'.gopls.setup(config({}))
 
 vim.api.nvim_set_keymap('n', '<leader> ', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', {noremap = true, silent = true})

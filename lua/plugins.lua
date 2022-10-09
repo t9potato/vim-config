@@ -24,6 +24,7 @@ return require('packer').startup(function()
     -- asthetics
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use { 'romgrk/nvim-treesitter-context' }
     use { 'npxbr/gruvbox.nvim' }
 
     use { 'ThePrimeagen/vim-be-good' }
