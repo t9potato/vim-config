@@ -1,4 +1,3 @@
--- vim.opt.clipboard = 'unnamedplus'
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
@@ -15,28 +14,20 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.number = true
+vim.opt.hls = false
 vim.opt.relativenumber = true
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.termguicolors = true
+vim.opt.showmode = false
+vim.opt.shortmess = 'filnxtToOFc'
 
 vim.opt.guicursor = ''
 
 vim.opt.cot={'menu', 'noinsert', 'menuone', 'noselect'}
+vim.opt.swf = false
+vim.opt.filetype="plugin"
 
 vim.api.nvim_command([[
-set nohlsearch
-set noswapfile
-set noshowmode
 colorscheme gruvbox
-set shortmess+=c
 syntax enable
-set filetype=plugin
-]])
-
-vim.api.nvim_command([[
-augroup AutoCompileLatex
-autocmd BufEnter *.tex :set wrap linebreak nolist spell
-autocmd BufWritePost *.tex :silent !bibtex %:t:r > /dev/null
-autocmd BufWritePost *.tex :silent !compiler % > /dev/null
-augroup END 
 ]])

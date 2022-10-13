@@ -26,6 +26,8 @@ return require('packer').startup(function()
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'romgrk/nvim-treesitter-context' }
     use { 'npxbr/gruvbox.nvim' }
+    use { 'akinsho/bufferline.nvim' }
+    use { 'nvim-lualine/lualine.nvim' }
 
     use { 'ThePrimeagen/vim-be-good' }
 end)
