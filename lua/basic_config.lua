@@ -28,6 +28,6 @@ vim.opt.swf = false
 vim.opt.filetype="plugin"
 
 vim.api.nvim_command([[
-colorscheme gruvbox
 syntax enable
+colorscheme kanagawa
 ]])

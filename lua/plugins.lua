@@ -27,6 +27,7 @@ return require('packer').startup(function()
     use { 'romgrk/nvim-treesitter-context' }
     use { 'npxbr/gruvbox.nvim' }
     use { 'echasnovski/mini.nvim' }
+    use { 'rebelot/kanagawa.nvim' }
 
     -- games
     use { 'ThePrimeagen/vim-be-good' }
