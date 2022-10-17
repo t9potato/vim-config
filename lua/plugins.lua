@@ -25,7 +25,6 @@ return require('packer').startup(function()
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'romgrk/nvim-treesitter-context' }
-    use { 'npxbr/gruvbox.nvim' }
     use { 'echasnovski/mini.nvim' }
     use { 'rebelot/kanagawa.nvim' }
 

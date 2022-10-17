@@ -1,25 +1,48 @@
-vim.cmd([[
- au BufEnter *.txt :setlocal spell spelllang=en_au
- au BufEnter *.txt :nnoremap <C-s> ]sz=
- au BufEnter *.txt :nnoremap <C-S> [sz=
- au BufEnter *.wiki :setlocal spell spelllang=en_au
- au BufEnter *.wiki :nnoremap <C-s> ]sz=
- au BufEnter *.wiki :nnoremap <C-S> [sz=
- au BufEnter *.html :setlocal spell spelllang=en_au
- au BufEnter *.html :nnoremap <C-s> ]sz=
- au BufEnter *.html :nnoremap <C-S> [sz=
- au BufEnter *.tex :set wrap linebreak nolist spell
- au BufEnter *.tex :nnoremap <C-s> ]sz=
- au BufEnter *.tex :nnoremap <C-S> [sz=
- au BufEnter *.tex :nnoremap j gj
- au BufEnter *.tex :nnoremap k gk
- au BufEnter *.tex :vnoremap j gj
- au BufEnter *.tex :vnoremap k gk
- au BufEnter *.docx :set wrap linebreak nolist spell
- au BufEnter *.docx :nnoremap <C-s> ]sz=
- au BufEnter *.docx :nnoremap <C-S> [sz=
- au BufEnter *.docx :nnoremap j gj
- au BufEnter *.docx :nnoremap k gk
- au BufEnter *.docx :vnoremap j gj
- au BufEnter *.docx :vnoremap k gk
- ]])
+local group = vim.api.nvim_create_augroup("autogr", { clear = true })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*.txt", "*.tex", "*.html" },
+    callback = function()
+        vim.schedule(function()
+            vim.cmd([[
+            :setlocal spell spelllang=en_au
+            :nnoremap <C-s> ]sz=
+            :nnoremap <C-S> [sz=
+            ]])
+        end)
+    end,
+    group = group
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*.tex",
+    callback = function()
+        vim.schedule(function()
+            vim.cmd([[
+            :set wrap linebreak nolist
+            :nnoremap j gj
+            :nnoremap k gk
+            :vnoremap j gj
+            :vnoremap k gk                       
+            ]])
+        end)
+    end,
+    group = group
+})
+
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*.tsv",
+    callback = function()
+        vim.schedule(function()
+            vim.cmd([[
+            :setlocal listchars=eol:\ ,tab:»-,trail:·,precedes:…,extends:…,nbsp:‗
+            :setlocal tabstop=20
+            :setlocal list
+            :setlocal noexpandtab
+            :setlocal shiftwidth=20
+            ]])
+        end)
+    end,
+    group = group
+})

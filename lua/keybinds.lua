@@ -11,9 +11,9 @@ end
 map('n', '<leader>w', ':w<CR>' ,{ silent = true })
 map('n', '<leader>q', 'ZZ' ,{ silent = true })
 
-map('n', '<C-p>', ':Telescope buffers<CR>', { silent = true })
-map('n', '<leader>f', ':Telescope find_files<CR>',{ silent = true })
-map('n', '<leader>s', ':Telescope treesitter<CR>',{ silent = true })
+map('n', '<C-p>', ':Telescope buffers theme=ivy<CR>', { silent = true })
+map('n', '<leader>f', ':Telescope find_files theme=ivy<CR>',{ silent = true })
+map('n', '<leader>s', ':Telescope treesitter theme=ivy<CR>',{ silent = true })
 
 map('n', 'gn', ':bn<cr>', { silent = true })
 map('n', 'gp', ':bp<cr>', { silent = true })

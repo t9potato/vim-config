@@ -1,8 +1,8 @@
 require("plugins")
 require("basic_config")
 require("keybinds")
+
 require("spellcheck")
 require("nvimlspconfig")
-require("tsv")
 require("filetypes")
 require("miniconf")
