@@ -13,20 +13,23 @@ return require('packer').startup(function()
 
     -- Snippets
     use { 'L3MON4D3/LuaSnip' }
-    use { 'rafamadriz/friendly-snippets' }
 
     -- General Functions
     use { 'nvim-lua/popup.nvim' }
     use { 'nvim-lua/plenary.nvim' }
     use { 'nvim-telescope/telescope.nvim' }
-    use { 'unblevable/quick-scope' }
+    use { 'jinh0/eyeliner.nvim' }
 
     -- asthetics
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'romgrk/nvim-treesitter-context' }
-    use { 'echasnovski/mini.nvim' }
     use { 'rebelot/kanagawa.nvim' }
+
+    -- mini
+    use { 'echasnovski/mini.starter' }
+    use { 'echasnovski/mini.tabline' }
+    use { 'echasnovski/mini.statusline' }
 
     -- games
     use { 'ThePrimeagen/vim-be-good' }

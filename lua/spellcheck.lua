@@ -1,4 +1,11 @@
 local group = vim.api.nvim_create_augroup("autogr", { clear = true })
+function map(mode, lhs, rhs, opts)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
 
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.txt", "*.tex", "*.html" },
@@ -6,9 +13,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.schedule(function()
             vim.cmd([[
             :setlocal spell spelllang=en_au
-            :nnoremap <C-s> ]sz=
-            :nnoremap <C-S> [sz=
             ]])
+            map('n', '<C-s>', ']sz=', {})
+            map('n', '<C-S>', '[sz=', {})
         end)
     end,
     group = group
@@ -20,11 +27,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.schedule(function()
             vim.cmd([[
             :set wrap linebreak nolist
-            :nnoremap j gj
-            :nnoremap k gk
-            :vnoremap j gj
-            :vnoremap k gk                       
             ]])
+            map('n', 'j', 'gj', {silent=true})
+            map('n', 'k', 'gk', {silent=true})
+            map('v', 'j', 'gj', {silent=true})
+            map('v', 'k', 'gk', {silent=true})
         end)
     end,
     group = group

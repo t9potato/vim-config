@@ -27,6 +27,11 @@ vim.opt.cot={'menu', 'noinsert', 'menuone', 'noselect'}
 vim.opt.swf = false
 vim.opt.filetype="plugin"
 
+if vim.loop.os_uname().sysname == "Windows_NT"
+then
+    vim.opt.shell = "bash"
+end
+
 vim.api.nvim_command([[
 syntax enable
 colorscheme kanagawa
