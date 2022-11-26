@@ -34,5 +34,5 @@ end
 
 vim.api.nvim_command([[
 syntax enable
-colorscheme kanagawa
+colorscheme catppuccin
 ]])

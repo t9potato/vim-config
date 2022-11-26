@@ -24,7 +24,7 @@ return require('packer').startup(function()
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'romgrk/nvim-treesitter-context' }
-    use { 'rebelot/kanagawa.nvim' }
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- mini
     use { 'echasnovski/mini.tabline' }
