@@ -27,10 +27,6 @@ return require('packer').startup(function()
     use { 'rebelot/kanagawa.nvim' }
 
     -- mini
-    use { 'echasnovski/mini.starter' }
     use { 'echasnovski/mini.tabline' }
     use { 'echasnovski/mini.statusline' }
-
-    -- games
-    use { 'ThePrimeagen/vim-be-good' }
 end)
