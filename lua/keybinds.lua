@@ -18,8 +18,6 @@ map('n', '<leader>s', ':Telescope treesitter theme=ivy<CR>',{ silent = true })
 map('n', 'gn', ':bn<cr>', { silent = true })
 map('n', 'gp', ':bp<cr>', { silent = true })
 
-map('n', '<leader>r', ':term<CR>' ,{ silent = true })
-
 map('v', '<', '<gv', { silent = true })
 map('v', '>', '>gv', { silent = true })
 
