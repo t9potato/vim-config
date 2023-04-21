@@ -8,7 +8,7 @@ function map(mode, lhs, rhs, opts)
 end
 
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.txt", "*.tex", "*.html" },
+    pattern = { "*.txt", "*.html" },
     callback = function()
         vim.schedule(function()
             vim.cmd([[

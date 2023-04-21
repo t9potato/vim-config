@@ -29,10 +29,9 @@ vim.opt.filetype="plugin"
 
 if vim.loop.os_uname().sysname == "Windows_NT"
 then
-    vim.opt.shell = "bash"
+    vim.opt.shell = "powershell"
 end
 
 vim.api.nvim_command([[
 syntax enable
-colorscheme catppuccin
 ]])
