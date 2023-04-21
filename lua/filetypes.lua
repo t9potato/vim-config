@@ -1,7 +1,11 @@
 vim.cmd([[
 au BufRead,BufNewFile *.tsv :set filetype=tsv
+au BufRead,BufNewFile *.tex :set filetype=tex
 autocmd BufRead,BufNewFile *.inc :set filetype=asm
 au BufRead,BufNewFile *.wgsl :set filetype=wgsl
+au BufRead,BufNewFile *.h :set filetype=c
+au BufRead,BufNewFile *.frag :set filetype=glsl
+au BufRead,BufNewFile *.vert :set filetype=glsl
 ]])
 
 function ContextSetup(show_all_context)
