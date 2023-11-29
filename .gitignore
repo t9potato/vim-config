@@ -1,2 +1,4 @@
-plugged/
-ftplugin/
+tags
+test.sh
+.luarc.json
+nvim
