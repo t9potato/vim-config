@@ -1,14 +1,6 @@
---[[
-  - https://learnxinyminutes.com/docs/lua/
-  And then you can explore or search through `:help lua-guide`
-  - https://neovim.io/doc/user/lua-guide.html
---]]
-
--- See `:help mapleader`
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
---    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -23,14 +15,27 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
-
-  -- Git related plugins
-  'tpope/vim-fugitive',
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- NOTE: This is where your plugins related to LSP can be installed.
+  --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -52,15 +57,9 @@ require('lazy').setup({
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
-
-      -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
+      'hrsh7th/cmp-path',
     },
   },
 
@@ -79,11 +78,15 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-
-        -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
-        vim.keymap.set({ 'n', 'v' }, ']c', function()
+
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+        end
+
+        -- Navigation
+        map({ 'n', 'v' }, ']c', function()
           if vim.wo.diff then
             return ']c'
           end
@@ -91,8 +94,9 @@ require('lazy').setup({
             gs.next_hunk()
           end)
           return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-        vim.keymap.set({ 'n', 'v' }, '[c', function()
+        end, { expr = true, desc = 'Jump to next hunk' })
+
+        map({ 'n', 'v' }, '[c', function()
           if vim.wo.diff then
             return '[c'
           end
@@ -100,7 +104,10 @@ require('lazy').setup({
             gs.prev_hunk()
           end)
           return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
+        end, { expr = true, desc = 'Jump to previous hunk' })
+
+        -- Actions
+        -- visual mode
       end,
     },
   },
@@ -110,6 +117,7 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.highlight {'Normal', "ctermbg=NONE guibg=NONE"}
     end,
   },
   {
@@ -123,8 +131,7 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
-        -- theme = '',
+        icons_enabled = true,
         component_separators = '|',
         section_separators = '',
       },
@@ -162,11 +169,27 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  -- { import = 'custom.plugins' },
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('custom.harpoon')
+    end,
+  },
+
 }, {})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+
+-- Set default tab to four spaces
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.expandtab = true
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -181,11 +204,9 @@ vim.wo.relativenumber = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
+
 -- Enable break indent
 vim.o.breakindent = true
-
--- Save undo history
--- vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
@@ -198,6 +219,7 @@ vim.wo.signcolumn = 'yes'
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
+-- Scroll options
 vim.wo.wrap = false
 vim.wo.scrolloff = 8
 vim.wo.sidescrolloff = 4
@@ -211,6 +233,7 @@ vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
+-- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -221,12 +244,18 @@ vim.keymap.set({ 'n' }, '<leader>wq', 'ZZ', { silent = true, desc = 'Write Quit'
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+--
+-- Interact with system keyboard
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { desc = 'Paste from clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>Y', '"+Y', { desc = 'Yank to clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P', { desc = 'Paste from clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"+d', { desc = 'Paste from clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>D', '"+D', { desc = 'Yank to clipboard' })
 
-vim.keymap.set('n', '<leader>n', ':bn<cr>', { desc = '[G]oto [N]ext buffer' })
-vim.keymap.set('n', 'gp', ':bp<cr>', { desc = '[G]oto [P]revious buffer' })
-
-vim.keymap.set('n', '<leader>y', '"*y', { desc = 'Yank to clipboard' })
-vim.keymap.set('n', '<leader>p', '"*p', { desc = 'Paste from clipboard' })
+-- Reselect visual selection after changing indent level
+vim.keymap.set('v', '<', '<gv', { silent = true })
+vim.keymap.set('v', '>', '>gv', { silent = true })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -269,17 +298,17 @@ local function find_git_root()
   local current_dir
   local cwd = vim.fn.getcwd()
   -- If the buffer is not associated with a file, return nil
-  if current_file == "" then
+  if current_file == '' then
     current_dir = cwd
   else
     -- Extract the directory from the current file's path
-    current_dir = vim.fn.fnamemodify(current_file, ":h")
+    current_dir = vim.fn.fnamemodify(current_file, ':h')
   end
 
   -- Find the Git root directory from the current file's path
-  local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
+  local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
   if vim.v.shell_error ~= 0 then
-    print("Not a git repository. Searching on current working directory")
+    print 'Not a git repository. Searching on current working directory'
     return cwd
   end
   return git_root
@@ -289,9 +318,9 @@ end
 local function live_grep_git_root()
   local git_root = find_git_root()
   if git_root then
-    require('telescope.builtin').live_grep({
-      search_dirs = {git_root},
-    })
+    require('telescope.builtin').live_grep {
+      search_dirs = { git_root },
+    }
   end
 end
 
@@ -307,6 +336,12 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
+local function telescope_live_grep_open_files()
+  require('telescope.builtin').live_grep {
+    grep_open_files = true,
+    prompt_title = 'Live Grep in Open Files',
+  }
+end
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
@@ -414,7 +449,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -424,6 +459,7 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
+  -- Create a command `:Format` local to the LSP buffer
 end
 
 -- document existing key chains
@@ -431,9 +467,9 @@ require('which-key').register {
   ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
   ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
   ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+  ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
 
@@ -474,6 +510,7 @@ require('neodev').setup()
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
@@ -496,18 +533,10 @@ mason_lspconfig.setup_handlers {
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
-luasnip.config.setup {}
 
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
   completion = {
-    completeopt = 'menu,menuone,noinsert,noselect'
+    completeopt = 'menu,menuone,noinsert,noselect',
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -522,8 +551,6 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -531,8 +558,6 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.locally_jumpable(-1) then
-        luasnip.jump(-1)
       else
         fallback()
       end
@@ -540,7 +565,8 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'path' },
+    { name = 'buffer' },
   },
 }
 
